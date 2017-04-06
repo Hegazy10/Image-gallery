@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="modal fade" id="selectedImageModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body bg-danger">
+          <div class="selectedImage" *ngIf="selectedImage">
+            <img src="{{selectedImage.url}}" class="img-responsive">
+            <div class="glyphicon glyphicon-chevron-left btn btn-arrows" (click)="navigate(false)"></div>
+            <div class="glyphicon glyphicon-chevron-right btn btn-arrows arrow-forward" (click)="navigate(true)"></div>
+            <div class="caption" *ngIf="selectedImage.title || selectedImage.caption">
+              <p><strong>{{selectedImage.title}}</strong></p>
+              <p>{{selectedImage.caption}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <ul id="thumbnailsList">
+      <li *ngFor="let image of images" class="col-md-3">
+        <img src="{{image.url}}" class="tn" width="191" height="146" data-toggle="modal" data-target="#selectedImageModal" (click)="setSelectedImage(image)">
+      </li>
+    </ul>
+  </div>
+</div>
